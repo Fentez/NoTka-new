@@ -42,7 +42,7 @@ async function loadPlayerData(nick) {
     initSkinViewer(nick);
 
     const [regRes, onlineRes] = await Promise.all([
-      fetch("/registration.json").catch(() => ({})),
+      fetch("registration.json").catch(() => ({})),
       fetch("https://api.mcsrvstat.us/2/mc.notka.pp.ua").catch(() => ({})),
     ]);
 

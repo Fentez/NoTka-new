@@ -20,7 +20,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   const PLAYERS_JSON_URL =
     "https://map.notka.pp.ua/stats/all-players-data.json";
-  const REGISTRATION_JSON_URL = "/registration.json";
+  const REGISTRATION_JSON_URL = "registration.json";
 
   let allPlayers = [];
 

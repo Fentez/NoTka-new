@@ -246,7 +246,7 @@ document.addEventListener("DOMContentLoaded", () => {
             data.players.list
               ?.map(
                 (p) =>
-                  `<a href="/players/profile#${p}" class="player-row tooltip-player-link">
+                  `<a href="players/profile#${p}" class="player-row tooltip-player-link">
                      <img src="https://mc-heads.net/avatar/${p}/24" class="player-head">
                      <span class="player-name">${p}</span>
                    </a>`,
