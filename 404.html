@@ -4,19 +4,42 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>NoTka | 404</title>
+    <meta
+      name="description"
+      content="NoTka — унікальний український Vanilla+ сервер з творчим та дружнім ком'юніті. У нас немає приватів, є власний сайт, мапа та своя історія, а найголовніше — це наші гравці"
+    />
+
+    <meta property="og:title" content="NoTka | 404" />
+    <meta
+      property="og:description"
+      content="NoTka — унікальний український Vanilla+ сервер з творчим та дружнім ком'юніті. У нас немає приватів, є власний сайт, мапа та своя історія, а найголовніше — це наші гравці"
+    />
+    <meta property="og:type" content="website" />
+    <meta property="og:image" content="/img/og_main_image.jpg" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:type" content="image/jpeg" />
+    <meta property="og:site_name" content="NoTka" />
+    <meta property="og:locale" content="uk_UA" />
 
     <link
-      href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&display=swap"
-      rel="stylesheet"
+      rel="apple-touch-icon"
+      sizes="180x180"
+      href="/favicons/apple-touch-icon.png"
     />
     <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+      rel="icon"
+      type="image/png"
+      sizes="96x96"
+      href="/favicons/favicon-96x96.png"
     />
-    <link rel="stylesheet" href="css/style.css" />
+    <link rel="manifest" href="/favicons/site.webmanifest" />
+    <link rel="mask-icon" href="/favicons/favicon.svg" color="#5bbad5" />
+    <link rel="shortcut icon" href="/favicons/favicon.ico" />
+    <meta name="msapplication-TileColor" content="#a855f7" />
+    <meta name="theme-color" content="#ffffff" />
 
     <script>
-
       if (
         localStorage.getItem("theme") === "dark" ||
         (!localStorage.getItem("theme") &&
@@ -25,15 +48,23 @@
         document.documentElement.setAttribute("data-theme", "dark");
       }
     </script>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <link rel="stylesheet" href="/css/style.css" />
 
     <style>
-
       .error-wrapper {
         min-height: 80vh;
         display: flex;
         align-items: center;
         justify-content: center;
-        padding-top: 80px; 
+        padding-top: 80px;
         padding-bottom: 40px;
         text-align: center;
       }
@@ -62,7 +93,6 @@
         position: relative;
         display: inline-block;
       }
-
 
       .error-code::after {
         content: "404";
@@ -160,8 +190,7 @@
         </div>
         <div class="error-code">404</div>
         <h1 class="error-title">Ви загубилися у Безодні</h1>
-        <p class="error-desc">
-        </p>
+        <p class="error-desc"></p>
         <a href="" class="btn-home">
           <i class="fa-solid fa-house"></i> На Головну
         </a>
@@ -170,7 +199,7 @@
 
     <footer></footer>
 
-    <script src="js/nav.js"></script>
-    <script src="js/script.js"></script>
+    <script src="/js/nav.js"></script>
+    <script src="/js/script.js"></script>
   </body>
 </html>
