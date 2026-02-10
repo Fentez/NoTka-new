@@ -3,7 +3,7 @@ const siteConfig = {
     { text: "Головна", href: "/" },
     { text: "Вікі", href: "https://wiki.notka.pp.ua/", target: "_blank" },
     { text: "Гравці", href: "/players" },
-    { text: "Правила", href: "../rules" },
+    { text: "Правила", href: "/rules" },
     { text: "Мапа", href: "https://map.notka.pp.ua/", target: "_blank" },
   ],
   socials: {
@@ -120,4 +120,5 @@ document.addEventListener("DOMContentLoaded", () => {
 
   document.dispatchEvent(new Event("layoutRendered"));
 });
+
 
