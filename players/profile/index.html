@@ -1,0 +1,251 @@
+<!doctype html>
+<html lang="uk">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>NoTka | Профіль</title>
+    <meta
+      name="description"
+      content="NoTka — унікальний український Vanilla+ сервер з творчим та дружнім ком'юніті. У нас немає приватів, є власний сайт, мапа та своя історія, а найголовніше — це наші гравці"
+    />
+
+    <meta property="og:title" content="NoTka | Профіль" />
+    <meta
+      property="og:description"
+      content="NoTka — унікальний український Vanilla+ сервер з творчим та дружнім ком'юніті. У нас немає приватів, є власний сайт, мапа та своя історія, а найголовніше — це наші гравці"
+    />
+    <meta property="og:type" content="website" />
+    <meta property="og:image" content="/img/og_main_image.jpg" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:type" content="image/jpeg" />
+    <meta property="og:site_name" content="NoTka" />
+    <meta property="og:locale" content="uk_UA" />
+
+    <link
+      rel="apple-touch-icon"
+      sizes="180x180"
+      href="/favicons/apple-touch-icon.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="96x96"
+      href="/favicons/favicon-96x96.png"
+    />
+    <link rel="manifest" href="/favicons/site.webmanifest" />
+    <link rel="mask-icon" href="/favicons/favicon.svg" color="#5bbad5" />
+    <link rel="shortcut icon" href="/favicons/favicon.ico" />
+    <meta name="msapplication-TileColor" content="#a855f7" />
+    <meta name="theme-color" content="#ffffff" />
+    <script>
+      if (
+        localStorage.getItem("theme") === "dark" ||
+        (!localStorage.getItem("theme") &&
+          window.matchMedia("(prefers-color-scheme: dark)").matches)
+      ) {
+        document.documentElement.setAttribute("data-theme", "dark");
+      }
+    </script>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <link rel="stylesheet" href="/css/style.css" />
+    <link rel="stylesheet" href="/css/profile.css" />
+    <script src="https://bs-community.github.io/skinview3d/js/skinview3d.bundle.js"></script>
+  </head>
+  <body>
+    <div class="mobile-menu-overlay" id="mobile-menu"></div>
+
+    <div class="background-container">
+      <div class="orb orb-1"></div>
+      <div class="orb orb-2"></div>
+    </div>
+
+    <nav class="nav-island" id="navbar"></nav>
+
+    <main class="profile-page-wrapper">
+      <div id="content-loader">
+        <div class="loader-content">
+          <i class="fa-solid fa-circle-notch fa-spin"></i>
+          <h2>Завантаження...</h2>
+        </div>
+      </div>
+
+      <div id="error-message" class="error-container" style="display: none">
+        <i class="fa-solid fa-user-slash"></i>
+        <h1>Цей гравець у нас не грає</h1>
+        <p>
+          Ми не знайшли гравця з ніком
+          <span id="error-nick" class="highlight-nick">...</span>.
+        </p>
+        <a href="/players" class="btn-back">Повернутися до списку</a>
+      </div>
+
+      <div id="profile-content" style="display: none">
+        <div class="breadcrumbs reveal">
+          <a href="/players" class="bread-link">Гравці</a>
+          <span class="separator"
+            ><i class="fa-solid fa-chevron-right"></i
+          ></span>
+          <span id="bread-nick" class="current-nick">...</span>
+        </div>
+
+        <div class="profile-container reveal">
+          <div class="left-column">
+            <div class="skin-card">
+              <div class="skin-wrapper">
+                <canvas id="skin_container"></canvas>
+
+                <a
+                  id="dl-btn"
+                  href="#"
+                  class="dl-skin-btn"
+                  title="Завантажити"
+                  target="_blank"
+                >
+                  <i class="fa-solid fa-download"></i>
+                </a>
+              </div>
+              <div class="skin-controls">
+                <div class="control-btn active" id="btn-walk">
+                  <i class="fa-solid fa-walking"></i> Ходьба
+                </div>
+                <div class="control-btn" id="btn-rotate">
+                  <i class="fa-solid fa-sync"></i> Обертання
+                </div>
+              </div>
+            </div>
+
+            <div id="sponsor-big-box" class="sponsor-big-card"></div>
+          </div>
+
+          <div class="right-column">
+            <div class="profile-header">
+              <div class="nick-row">
+                <h1 class="player-nick" id="player-nick">...</h1>
+                <div
+                  id="sponsor-star"
+                  class="sponsor-star"
+                  style="display: none"
+                >
+                  <i class="fa-solid fa-star"></i>
+                </div>
+                <div
+                  id="online-dot"
+                  class="online-dot"
+                  style="display: none"
+                ></div>
+              </div>
+              <div class="roles-row" id="roles-container"></div>
+            </div>
+
+            <h2 class="section-title">Статистика</h2>
+            <div class="primary-stats-grid">
+              <div class="primary-stat-card">
+                <div class="p-icon-large">
+                  <i class="fa-regular fa-calendar"></i>
+                </div>
+                <div class="p-info">
+                  <div class="p-stat-label">Дата реєстрації</div>
+                  <div class="p-stat-val" id="val-join-date">-</div>
+                  <div class="p-stat-sub"></div>
+                </div>
+              </div>
+
+              <div class="primary-stat-card">
+                <div class="p-icon-large">
+                  <i class="fa-regular fa-clock"></i>
+                </div>
+                <div class="p-info">
+                  <div class="p-stat-label">Награно</div>
+                  <div class="p-stat-val" id="val-play-time">-</div>
+                  <div class="p-stat-sub" id="sub-play-days">-</div>
+                </div>
+              </div>
+
+              <div class="primary-stat-card" id="status-card">
+                <div class="p-icon-large" id="status-icon-bg">
+                  <i class="fa-solid fa-power-off" id="status-icon"></i>
+                </div>
+                <div class="p-info">
+                  <div class="p-stat-label" id="status-label">
+                    Вхід
+                  </div>
+                  <div class="p-stat-val" id="val-status">-</div>
+                  <div class="p-stat-sub" id="sub-status">-</div>
+                </div>
+              </div>
+            </div>
+
+            <div class="stats-divider"></div>
+
+            <div class="secondary-stats-grid">
+              <div class="stat-card">
+                <div class="stat-label">
+                  <i class="fa-solid fa-door-open"></i> Сесій
+                </div>
+                <div class="stat-val" id="val-sessions">0</div>
+              </div>
+
+              <div class="stat-card">
+                <div class="stat-label">
+                  <i class="fa-solid fa-skull-crossbones"></i> Вбито гравцями
+                </div>
+                <div class="stat-val" id="val-killed-by">0</div>
+              </div>
+
+              <div class="stat-card">
+                <div class="stat-label">
+                  <i class="fa-solid fa-khanda"></i> Всього смертей
+                </div>
+                <div class="stat-val" id="val-deaths">0</div>
+              </div>
+              <div class="stat-card">
+                <div class="stat-label">
+                  <i class="fa-solid fa-spider"></i> Вбито мобів
+                </div>
+                <div class="stat-val" id="val-mob-kills">0</div>
+              </div>
+              <div class="stat-card">
+                <div class="stat-label">
+                  <i class="fa-solid fa-paper-plane"></i> На елітрах
+                </div>
+                <div class="stat-val" id="val-aviate">0 км</div>
+              </div>
+              <div class="stat-card">
+                <div class="stat-label">
+                  <i class="fa-solid fa-person-running"></i> Бігом
+                </div>
+                <div class="stat-val" id="val-sprint">0 км</div>
+              </div>
+              <div class="stat-card">
+                <div class="stat-label">
+                  <i class="fa-solid fa-shoe-prints"></i> Пішки
+                </div>
+                <div class="stat-val" id="val-walk">0 км</div>
+              </div>
+              <div class="stat-card">
+                <div class="stat-label">
+                  <i class="fa-solid fa-water"></i> Вплав
+                </div>
+                <div class="stat-val" id="val-swim">0 км</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <footer></footer>
+
+    <script src="/js/nav.js"></script>
+    <script src="/js/script.js"></script>
+    <script src="/js/profile.js"></script>
+  </body>
+</html>

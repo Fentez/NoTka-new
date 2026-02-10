@@ -1,0 +1,176 @@
+<!doctype html>
+<html lang="uk">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>NoTka | 404</title>
+
+    <link
+      href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <link rel="stylesheet" href="/css/style.css" />
+
+    <script>
+
+      if (
+        localStorage.getItem("theme") === "dark" ||
+        (!localStorage.getItem("theme") &&
+          window.matchMedia("(prefers-color-scheme: dark)").matches)
+      ) {
+        document.documentElement.setAttribute("data-theme", "dark");
+      }
+    </script>
+
+    <style>
+
+      .error-wrapper {
+        min-height: 80vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding-top: 80px; 
+        padding-bottom: 40px;
+        text-align: center;
+      }
+
+      .error-card {
+        background: var(--card-bg);
+        backdrop-filter: blur(16px);
+        -webkit-backdrop-filter: blur(16px);
+        border: var(--glass-border);
+        border-radius: 30px;
+        padding: 60px 40px;
+        max-width: 600px;
+        width: 90%;
+        box-shadow: var(--shadow);
+        animation: floatCard 6s ease-in-out infinite;
+      }
+
+      .error-code {
+        font-size: 8rem;
+        font-weight: 900;
+        line-height: 1;
+        margin-bottom: 10px;
+        background: var(--accent-gradient);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        position: relative;
+        display: inline-block;
+      }
+
+
+      .error-code::after {
+        content: "404";
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        background: inherit;
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        filter: blur(15px);
+        opacity: 0.5;
+        z-index: -1;
+      }
+
+      .error-title {
+        font-size: 1.8rem;
+        font-weight: 800;
+        margin-bottom: 15px;
+        color: var(--text-color);
+      }
+
+      .error-desc {
+        color: var(--text-muted);
+        font-size: 1.1rem;
+        margin-bottom: 30px;
+        line-height: 1.6;
+      }
+
+      .minecraft-icon {
+        font-size: 4rem;
+        margin-bottom: 20px;
+        color: var(--primary);
+        animation: rotateIcon 10s linear infinite;
+      }
+
+      @keyframes floatCard {
+        0%,
+        100% {
+          transform: translateY(0);
+        }
+        50% {
+          transform: translateY(-15px);
+        }
+      }
+
+      @keyframes rotateIcon {
+        0% {
+          transform: rotate(0deg);
+        }
+        25% {
+          transform: rotate(10deg);
+        }
+        75% {
+          transform: rotate(-10deg);
+        }
+        100% {
+          transform: rotate(0deg);
+        }
+      }
+      .btn-home {
+        display: inline-block;
+        padding: 12px 35px;
+        background: var(--accent-gradient);
+        color: white;
+        border-radius: 12px;
+        font-weight: 700;
+        font-size: 1.1rem;
+        transition:
+          transform 0.2s,
+          box-shadow 0.2s;
+        box-shadow: 0 5px 15px rgba(168, 85, 247, 0.3);
+      }
+      .btn-home:hover {
+        transform: scale(1.05);
+        box-shadow: 0 8px 25px rgba(168, 85, 247, 0.5);
+      }
+    </style>
+  </head>
+  <body>
+    <div class="mobile-menu-overlay" id="mobile-menu"></div>
+
+    <div class="background-container">
+      <div class="orb orb-1"></div>
+      <div class="orb orb-2"></div>
+    </div>
+
+    <nav class="nav-island" id="navbar"></nav>
+
+    <main class="error-wrapper">
+      <div class="error-card reveal active">
+        <div class="minecraft-icon">
+          <i class="fa-solid fa-cube"></i>
+        </div>
+        <div class="error-code">404</div>
+        <h1 class="error-title">Ви загубилися у Безодні</h1>
+        <p class="error-desc">
+        </p>
+        <a href="/" class="btn-home">
+          <i class="fa-solid fa-house"></i> На Головну
+        </a>
+      </div>
+    </main>
+
+    <footer></footer>
+
+    <script src="/js/nav.js"></script>
+    <script src="/js/script.js"></script>
+  </body>
+</html>

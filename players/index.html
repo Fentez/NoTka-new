@@ -1,0 +1,185 @@
+<!doctype html>
+<html lang="uk">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>NoTka │ Гравці</title>
+    <meta
+      name="description"
+      content="NoTka — унікальний український Vanilla+ сервер з творчим та дружнім ком'юніті. У нас немає приватів, є власний сайт, мапа та своя історія, а найголовніше — це наші гравці"
+    />
+
+    <meta property="og:title" content="NoTka │ Гравці" />
+    <meta
+      property="og:description"
+      content="NoTka — унікальний український Vanilla+ сервер з творчим та дружнім ком'юніті. У нас немає приватів, є власний сайт, мапа та своя історія, а найголовніше — це наші гравці"
+    />
+    <meta property="og:type" content="website" />
+    <meta property="og:image" content="/img/og_main_image.jpg" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:type" content="image/jpeg" />
+    <meta property="og:site_name" content="NoTka" />
+    <meta property="og:locale" content="uk_UA" />
+
+    <link
+      rel="apple-touch-icon"
+      sizes="180x180"
+      href="/favicons/apple-touch-icon.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="96x96"
+      href="/favicons/favicon-96x96.png"
+    />
+    <link rel="manifest" href="/favicons/site.webmanifest" />
+    <link rel="mask-icon" href="/favicons/favicon.svg" color="#5bbad5" />
+    <link rel="shortcut icon" href="/favicons/favicon.ico" />
+    <meta name="msapplication-TileColor" content="#a855f7" />
+    <meta name="theme-color" content="#ffffff" />
+    <script>
+      if (
+        localStorage.getItem("theme") === "dark" ||
+        (!localStorage.getItem("theme") &&
+          window.matchMedia("(prefers-color-scheme: dark)").matches)
+      ) {
+        document.documentElement.setAttribute("data-theme", "dark");
+      }
+    </script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <link rel="stylesheet" href="/css/style.css" />
+    <link rel="stylesheet" href="/css/players.css" />
+  </head>
+  <body>
+    <div class="mobile-menu-overlay" id="mobile-menu"></div>
+    <div class="background-container">
+      <div class="orb orb-1"></div>
+      <div class="orb orb-2"></div>
+      <div id="floating-icons-container"></div>
+    </div>
+
+    <nav class="nav-island" id="navbar"></nav>
+
+    <div class="content-wrapper">
+      <div class="players-layout reveal">
+        <aside class="players-sidebar-container">
+          <div class="players-sidebar sticky-sidebar">
+            <h2 class="sidebar-title">ГРАВЦІ</h2>
+
+            <div class="filter-group">
+              <div class="custom-select" id="sort-select">
+                <div class="select-trigger">
+                  <span class="select-value">За часом (більше)</span>
+                  <i class="fa-solid fa-chevron-down"></i>
+                </div>
+                <div class="select-options">
+                  <div class="select-option selected" data-value="time-desc">
+                    Час (більше)
+                  </div>
+                  <div class="select-option" data-value="time-asc">
+                    Час (менше)
+                  </div>
+                  <div class="select-option" data-value="name-asc">
+                    Нік (A - Z)
+                  </div>
+                  <div class="select-option" data-value="name-desc">
+                    Нік (Z - A)
+                  </div>
+                  <div class="select-option" data-value="reg-desc">
+                    Дата Реєстрації (нові)
+                  </div>
+                  <div class="select-option" data-value="reg-asc">
+                    Дата Реєстрації (старі)
+                  </div>
+                  <div class="select-option" data-value="seen-desc">
+                    Дата входу (нещодавно)
+                  </div>
+                  <div class="select-option" data-value="seen-asc">
+                    Дата входу (давно)
+                  </div>
+                </div>
+                <input
+                  type="hidden"
+                  id="current-sort-value"
+                  value="time-desc"
+                />
+              </div>
+            </div>
+
+            <div class="filter-group">
+              <label class="filter-label">Фільтри</label>
+
+              <label class="custom-checkbox">
+                <input type="checkbox" id="filter-default" value="default" />
+                <span class="checkmark"></span>
+                Гравець
+              </label>
+
+              <label class="custom-checkbox">
+                <input type="checkbox" id="filter-owner" value="owner" />
+                <span class="checkmark"></span>
+                Власник
+              </label>
+
+              <label class="custom-checkbox">
+                <input type="checkbox" id="filter-sponsor" value="sponsor" />
+                <span class="checkmark"></span>
+                Спонсор
+              </label>
+
+              <label class="custom-checkbox">
+                <input type="checkbox" id="filter-online" value="online" />
+                <span class="checkmark"></span>
+                Зараз онлайн
+              </label>
+            </div>
+          </div>
+        </aside>
+
+        <main class="players-main">
+          <div class="search-header">
+            <div class="search-wrapper">
+              <i class="fa-solid fa-magnifying-glass"></i>
+              <input
+                type="text"
+                id="player-search"
+                placeholder="Пошук гравця за ніком..."
+              />
+            </div>
+
+            <div class="stats-counter">
+              <span>Всього гравців: <b id="total-players-count">0</b></span>
+              <span class="dot">•</span>
+              <span>Спонсорів: <b id="total-sponsors-count">0</b></span>
+              <span class="dot">•</span>
+              <span>Оновлено: <b id="last-updated">...</b></span>
+            </div>
+          </div>
+
+          <div id="players-list" class="players-grid">
+            <div class="loading-spinner">
+              <i class="fa-solid fa-circle-notch fa-spin"></i> Завантаження...
+            </div>
+          </div>
+        </main>
+      </div>
+    </div>
+
+    <footer></footer>
+
+    <script src="/js/nav.js"></script>
+    <script src="/js/script.js"></script>
+    <script src="/js/players.js"></script>
+  </body>
+</html>

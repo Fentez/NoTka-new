@@ -1,0 +1,366 @@
+<!doctype html>
+<html lang="uk">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>NoTka │ Головна</title>
+
+    <meta
+      name="description"
+      content="NoTka — унікальний український Vanilla+ сервер з творчим та дружнім ком'юніті. У нас немає приватів, є власний сайт, мапа та своя історія, а найголовніше — це наші гравці"
+    />
+
+    <meta property="og:title" content="NoTka │ Головна" />
+    <meta
+      property="og:description"
+      content="NoTka — унікальний український Vanilla+ сервер з творчим та дружнім ком'юніті. У нас немає приватів, є власний сайт, мапа та своя історія, а найголовніше — це наші гравці"
+    />
+    <meta property="og:type" content="website" />
+    <meta property="og:image" content="/img/og_main_image.jpg" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:type" content="image/jpeg" />
+    <meta property="og:site_name" content="NoTka" />
+    <meta property="og:locale" content="uk_UA" />
+
+    <link
+      rel="apple-touch-icon"
+      sizes="180x180"
+      href="/favicons/apple-touch-icon.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="96x96"
+      href="/favicons/favicon-96x96.png"
+    />
+    <link rel="manifest" href="/favicons/site.webmanifest" />
+    <link rel="mask-icon" href="/favicons/favicon.svg" color="#5bbad5" />
+    <link rel="shortcut icon" href="/favicons/favicon.ico" />
+    <meta name="msapplication-TileColor" content="#a855f7" />
+    <meta name="theme-color" content="#ffffff" />
+
+    <script>
+      if (
+        localStorage.getItem("theme") === "dark" ||
+        (!localStorage.getItem("theme") &&
+          window.matchMedia("(prefers-color-scheme: dark)").matches)
+      ) {
+        document.documentElement.setAttribute("data-theme", "dark");
+      }
+    </script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+
+    <link rel="stylesheet" href="/css/style.css" />
+  </head>
+  <body>
+    <div class="mobile-menu-overlay" id="mobile-menu"></div>
+    <div class="background-container">
+      <div class="orb orb-1"></div>
+      <div class="orb orb-2"></div>
+      <div id="floating-icons-container"></div>
+    </div>
+
+    <nav class="nav-island" id="navbar"></nav>
+
+    <header class="hero-section">
+      <div class="hero-content">
+        <h1 class="hero-title">
+          NoTka - <span class="typing-text"></span><span class="cursor">|</span>
+        </h1>
+        <p class="hero-subtitle">
+          Майнкрафт сервер. Поринь у світ контенту та творчості!
+        </p>
+
+        <div class="hero-buttons">
+          <a
+            href="https://discord.gg/y4vEfn7qS9"
+            class="btn btn-primary"
+            target="_blank"
+            >Подати заявку</a
+          >
+          <a href="#about" class="btn btn-outline">Про сервер</a>
+        </div>
+
+        <div class="server-status">
+          <div class="status-icon">
+            <img src="/img/logo.webp" alt="Server Icon" />
+          </div>
+          <div class="status-info">
+            <div class="status-row top-row">
+              <span class="server-ip">mc.notka.pp.ua</span>
+
+              <div class="online-wrapper">
+                <span class="online-badge" id="online-display">
+                  <i class="fa-solid fa-users"></i>
+                  <span id="player-count">...</span>
+                </span>
+
+                <div class="player-tooltip" id="player-list">
+                  <span class="tooltip-loading">Завантаження...</span>
+                </div>
+              </div>
+            </div>
+            <div class="status-row">
+              <span class="motd">| NoTka Ванільний Український сервер</span>
+            </div>
+            <div class="status-row">
+              <span class="discord-link"
+                >| Приєднатися на сервер:
+                <a href="https://discord.gg/y4vEfn7qS9" target="_blank"
+                  >discord.gg/y4vEfn7qS9</a
+                ></span
+              >
+            </div>
+            <div class="status-row">
+              <span class="version">Версія: 1.21.10</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="hero-image-container">
+        <img
+          src="/img/hero-image.png"
+          alt="Minecraft Character"
+          class="parallax-img"
+          id="hero-img"
+        />
+      </div>
+    </header>
+
+    <section class="section-grid reveal">
+      <div class="cards-container">
+        <div class="card info-card">
+          <div class="card-content">
+            <i class="fa-solid fa-heart icon"></i>
+            <h3>Ми добрі</h3>
+            <p>
+              У нас дуже дружне ком’юніті — всі знають один одного та завжди
+              готові підтримати
+            </p>
+          </div>
+        </div>
+        <div class="card info-card">
+          <div class="card-content">
+            <i class="fa-solid fa-unlock icon"></i>
+            <h3>Без ліцензії</h3>
+            <p>
+              На NoTka можна грати як з ліцензійної версії, так і з піратки.
+            </p>
+          </div>
+        </div>
+        <div class="card info-card">
+          <div class="card-content">
+            <i class="fa-solid fa-hand-holding-heart icon"></i>
+            <h3>Повністю безкоштовно</h3>
+            <p>
+              NoTka — це повністю безкоштовний проєкт. Власник самостійно
+              оплачує всі витрати на утримання та роботу сервера, а гравці
+              допомагають йому в цьому добровільними донатами та купівлею
+              спонсорства
+            </p>
+          </div>
+        </div>
+        <div class="card info-card">
+          <div class="card-content">
+            <i class="fa-solid fa-leaf icon"></i>
+            <h3>Атмосфера</h3>
+            <p>
+              Чиста ваніль з невеликими механіками для кращого ігрового досвіду
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="gallery-section reveal">
+      <div class="gallery-container">
+        <div class="main-image-wrapper">
+          <button class="gallery-btn prev">
+            <i class="fa-solid fa-chevron-left"></i>
+          </button>
+          <img
+            src="/img/main-2.webp"
+            alt="Main Gallery Image"
+            id="gallery-main"
+          />
+          <button class="gallery-btn next">
+            <i class="fa-solid fa-chevron-right"></i>
+          </button>
+        </div>
+        <div class="thumbnails-row">
+          <img
+            src="/img/main-2.webp"
+            class="thumb active"
+            data-src="/img/main-2.webp"
+          />
+          <img
+            src="/img/main-1.webp"
+            class="thumb"
+            data-src="/img/main-1.webp"
+          />
+          <img
+            src="/img/main-3.webp"
+            class="thumb"
+            data-src="/img/main-3.webp"
+          />
+          <img
+            src="/img/main-4.webp"
+            class="thumb"
+            data-src="/img/main-4.webp"
+          />
+        </div>
+      </div>
+    </section>
+
+    <section class="section-grid reveal" id="about">
+      <h2 class="section-title">Особливості</h2>
+      <div class="cards-container">
+        <a
+          href="https://wiki.notka.pp.ua/mechanics/wordle"
+          class="card feature-card"
+          target="_blank"
+          ><div class="card-content">
+            <h1>NTWordle</h1>
+            <p>
+              Унікальна гра Wordle прямо в чаті Майнкрафта! Грай наодинці або
+              загадуй слова іншим гравцям.
+            </p>
+            <span class="read-more"
+              >Детальніше <i class="fa-solid fa-arrow-right"></i
+            ></span></div
+        ></a>
+        <a
+          href="https://wiki.notka.pp.ua/mechanics/stick"
+          class="card feature-card"
+          target="_blank"
+          ><div class="card-content">
+            <h1>Дебаг Стік</h1>
+            <p>
+              Дозволяє переглядати властивості блоків та змінювати їх так само,
+              як це робить ванільна відлагоджувальна палиця.
+            </p>
+            <span class="read-more"
+              >Детальніше <i class="fa-solid fa-arrow-right"></i
+            ></span></div
+        ></a>
+        <a
+          href="https://wiki.notka.pp.ua/mechanics/nicknames"
+          class="card feature-card"
+          target="_blank"
+          ><div class="card-content">
+            <h1>Приховані нікнейми</h1>
+            <p>
+              Для повного занурення в ігровий процес ми вимкнули відображення
+              ніків над головами гравців
+            </p>
+            <span class="read-more"
+              >Детальніше <i class="fa-solid fa-arrow-right"></i
+            ></span></div
+        ></a>
+        <a
+          href="https://wiki.notka.pp.ua/mechanics/stands"
+          class="card feature-card"
+          target="_blank"
+          ><div class="card-content">
+            <h1>Стійки для обладунків</h1>
+            <p>
+              Створюй унікальні декорації завдяки плагіну, що дозволяє
+              налаштовувати будь-які пози для стійок.
+            </p>
+            <span class="read-more"
+              >Детальніше <i class="fa-solid fa-arrow-right"></i
+            ></span></div
+        ></a>
+      </div>
+    </section>
+
+    <section class="faq-section reveal">
+      <h2 class="section-title">FAQ</h2>
+      <div class="faq-container">
+        <div class="faq-item">
+          <div class="faq-question">
+            <span>Скільки коштує прохідка?</span
+            ><i class="fa-solid fa-chevron-down"></i>
+          </div>
+          <div class="faq-answer">0 гривень. Прохідка безкоштовна.</div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-question">
+            <span>На який час дається прохідка?</span
+            ><i class="fa-solid fa-chevron-down"></i>
+          </div>
+          <div class="faq-answer">Назавжди.</div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-question">
+            <span>Чи можна грати з піратки?</span
+            ><i class="fa-solid fa-chevron-down"></i>
+          </div>
+          <div class="faq-answer">Так.</div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-question">
+            <span>Яка версія?</span><i class="fa-solid fa-chevron-down"></i>
+          </div>
+          <div class="faq-answer">1.21.10</div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-question">
+            <span>На сервері є /sethome, привати тощо?</span
+            ><i class="fa-solid fa-chevron-down"></i>
+          </div>
+          <div class="faq-answer">
+            Ні, на сервері немає приватів. Але якщо у вас вкрадуть речі,
+            порушника буде забанено, а речі вам повернуть.
+          </div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-question">
+            <span>Як почати грати?</span
+            ><i class="fa-solid fa-chevron-down"></i>
+          </div>
+          <div class="faq-answer">
+            Подати заявку в нашому
+            <a href="https://discord.gg/y4vEfn7qS9" target="_blank">Discord</a>
+          </div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-question">
+            <span>Як отримати допомогу адміністрації?</span
+            ><i class="fa-solid fa-chevron-down"></i>
+          </div>
+          <div class="faq-answer">
+            У
+            <a href="https://discord.gg/y4vEfn7qS9" target="_blank">Discord</a>
+            є канал для всіх технічних проблем — #Допомога. Пишемо туди з описом
+            проблеми і просто чекаємо.
+          </div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-question">
+            <span>Я можу зайти і грати з телефону?</span
+            ><i class="fa-solid fa-chevron-down"></i>
+          </div>
+          <div class="faq-answer">Ні.</div>
+        </div>
+      </div>
+    </section>
+
+    <footer></footer>
+
+    <script src="/js/nav.js"></script>
+    <script src="/js/script.js"></script>
+  </body>
+</html>
