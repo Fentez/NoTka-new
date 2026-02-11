@@ -41,24 +41,33 @@ async function loadPlayerData(nick) {
 
     initSkinViewer(nick);
 
-    const [regRes, onlineRes] = await Promise.all([
-      fetch("/registration.json").catch(() => ({})),
-      fetch("https://api.mcsrvstat.us/2/mc.notka.pp.ua").catch(() => ({})),
-    ]);
-
     let regData = {};
     try {
-      regData = await regRes.json();
-    } catch (e) {}
+      const regRes = await fetch("/registration.json");
+      if (regRes.ok) regData = await regRes.json();
+    } catch (e) {
+      console.warn("Reg data failed");
+    }
 
-    const onlineData = await onlineRes.json();
 
     let isOnline = false;
-    if (onlineData?.players?.list) {
-      isOnline = onlineData.players.list.some(
-        (p) => p.toLowerCase() === nick.toLowerCase(),
+    try {
+      const onlineRes = await fetch(
+        "https://api.mcsrvstat.us/2/mc.notka.pp.ua",
       );
+      if (onlineRes.ok) {
+        const onlineData = await onlineRes.json();
+        if (onlineData?.players?.list) {
+          isOnline = onlineData.players.list.some(
+            (p) => p.toLowerCase() === nick.toLowerCase(),
+          );
+        }
+      }
+    } catch (e) {
+      console.warn("Status API failed, assuming offline");
+
     }
+
 
     fillProfileData(player, regData, isOnline);
 

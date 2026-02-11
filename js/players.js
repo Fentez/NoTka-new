@@ -26,29 +26,45 @@ document.addEventListener("DOMContentLoaded", () => {
 
   async function fetchAllData() {
     try {
-      const [playersRes, regRes, statusRes] = await Promise.all([
-        fetch(PLAYERS_JSON_URL + "?t=" + Date.now()),
-        fetch(REGISTRATION_JSON_URL + "?t=" + Date.now()),
-        fetch(`https://api.mcsrvstat.us/2/${SERVER_IP}`),
-      ]);
+      const playersRes = await fetch(PLAYERS_JSON_URL + "?t=" + Date.now());
 
       if (!playersRes.ok)
         throw new Error("Не вдалося завантажити файл гравців");
 
       const playersData = await playersRes.json();
 
+      const [regResult, statusResult] = await Promise.allSettled([
+        fetch(REGISTRATION_JSON_URL + "?t=" + Date.now()),
+        fetch(`https://api.mcsrvstat.us/2/${SERVER_IP}`),
+      ]);
+
       let regData = {};
-      try {
-        regData = await regRes.json();
-      } catch (e) {
-        console.warn("Файл реєстрації не знайдено або порожній");
+      if (regResult.status === "fulfilled" && regResult.value.ok) {
+        try {
+          regData = await regResult.value.json();
+        } catch (e) {
+          console.warn("Помилка парсингу реєстрації");
+        }
       }
 
-      const statusData = await statusRes.json();
-
       let onlineNames = [];
-      if (statusData.online && statusData.players && statusData.players.list) {
-        onlineNames = statusData.players.list.map((name) => name.toLowerCase());
+      if (statusResult.status === "fulfilled" && statusResult.value.ok) {
+        try {
+          const statusData = await statusResult.value.json();
+          if (
+            statusData.online &&
+            statusData.players &&
+            statusData.players.list
+          ) {
+            onlineNames = statusData.players.list.map((name) =>
+              name.toLowerCase(),
+            );
+          }
+        } catch (e) {
+          console.warn("Помилка отримання онлайн-статусу, показуємо офлайн");
+        }
+      } else {
+        console.warn("API статусу недоступне, використовуємо збережені дані");
       }
 
       allPlayers = processData(playersData, regData, onlineNames);
