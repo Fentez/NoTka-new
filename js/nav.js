@@ -3,7 +3,7 @@ const siteConfig = {
     { text: "Головна", href: "/" },
     { text: "Вікі", href: "https://wiki.notka.pp.ua/", target: "_blank" },
     { text: "Гравці", href: "/players" },
-    { text: "Правила", href: "../rules" },
+    { text: "Правила", href: "/rules" },
     { text: "Мапа", href: "https://map.notka.pp.ua/", target: "_blank" },
   ],
   socials: {
@@ -47,7 +47,7 @@ function renderNavbar() {
         <i class="fa-brands fa-discord"></i>
       </a>
       <div class="nav-left">
-        <a href="" class="logo"><img src="/img/logo.webp" alt="Logo" /></a>
+        <a href="/" class="logo"><img src="/img/logo.webp" alt="Logo" /></a>
         <ul class="nav-links">${navLinksHTML}</ul>
       </div>
       <div class="nav-right">
@@ -120,3 +120,4 @@ document.addEventListener("DOMContentLoaded", () => {
 
   document.dispatchEvent(new Event("layoutRendered"));
 });
+
