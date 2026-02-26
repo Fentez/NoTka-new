@@ -254,9 +254,9 @@ document.addEventListener("DOMContentLoaded", () => {
               .join("") ||
             '<span class="tooltip-empty">Тут нікого немає :(</span>';
         } else {
-          playerCountElem.textContent = "Офлайн";
+          playerCountElem.textContent = "Помилка";
           playerListElem.innerHTML =
-            '<span class="tooltip-error">Сервер вимкнено</span>';
+            '<span class="tooltip-error">Помилка</span>';
         }
       } catch {
         playerCountElem.textContent = "Помилка";
@@ -279,3 +279,4 @@ document.addEventListener("DOMContentLoaded", () => {
     .querySelectorAll(".reveal")
     .forEach((el) => revealObserver.observe(el));
 });
+
